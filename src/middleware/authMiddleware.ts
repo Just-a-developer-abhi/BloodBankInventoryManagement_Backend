@@ -30,7 +30,9 @@ export const verifyToken = (req: any, res: Response, next: NextFunction) => {
 // Restrict access based on roles
 export const restrictTo = (roles: string[]) => {
   return (req: any, res: Response, next: NextFunction) => {
+    console.log(req.user);
     if (!roles.includes(req?.user?.role)) {
+      console.log(req?.user?.role)
       return res.status(403).json({ message: 'Access denied' });
     }
     next();

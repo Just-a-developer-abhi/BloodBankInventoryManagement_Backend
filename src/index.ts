@@ -1,6 +1,9 @@
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors'
 import authRoutes from './routes/authRoutes';
+import donorRoutes from './routes/donorRoutes';
+import staffRoutes from './routes/staffRoutes';
+import hospitalRoutes from './routes/hospitalRoutes';
 import connectDB from './config/db';
 import dotenv from 'dotenv';
 
@@ -11,6 +14,9 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
+app.use('/api/donor', donorRoutes);
+app.use('/api/staff', staffRoutes);
+app.use('/api/hospital', hospitalRoutes);
 app.use('/api/auth', authRoutes);
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {

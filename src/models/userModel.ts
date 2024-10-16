@@ -19,9 +19,32 @@ const userSchema = new Schema({
   },
   role: {
     type: String,
-    enum: ['donor', 'bb_staff', 'hospital'], // Assuming these are the roles
+    enum: ['donor', 'staff', 'hospital'], // Assuming these are the roles
     required: true,
   },
+  userDetails :{
+    type: {
+      name: {
+        type: String,
+        required: true,
+      },
+      age: {
+        type: Number,
+        required: true,
+      },
+      bloodGroup: {
+        type: String,
+        enum: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
+      },
+      contact :{
+        type: String,
+      },
+      address :{
+        type: String,
+      },
+    },
+    required: false,
+  }
 }, { timestamps: true });
 
 const User = model('Users', userSchema);
